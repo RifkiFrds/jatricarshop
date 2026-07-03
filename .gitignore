@@ -4,11 +4,6 @@
 # MySQL Data (dikelola oleh Docker Volume, bukan git)
 mysql_data/
 
-# Docker files (konfigurasi deployment)
-docker-compose.yml
-Dockerfile
-.dockerignore
-
 # Git and IDE
 .git/
 .vscode/
