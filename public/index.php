@@ -2,18 +2,19 @@
 
 // Start session with cross-subdomain support
 if (session_status() === PHP_SESSION_NONE) {
-    $host = $_SERVER['HTTP_HOST'] ?? '';
-    // Strip port if present
-    $hostPart = explode(':', $host)[0];
-    
-    // Set session cookie domain to allow sharing across subdomains (e.g. .jatri.my.id)
-    if (filter_var($hostPart, FILTER_VALIDATE_IP) === false && $hostPart !== 'localhost' && substr_count($hostPart, '.') >= 2) {
-        // e.g. admin.jatri.my.id or jatri.my.id -> .jatri.my.id
-        // strip everything before the last two dots
-        $parts = explode('.', $hostPart);
-        $domain = '.' . implode('.', array_slice($parts, -2));
-        ini_set('session.cookie_domain', $domain);
+    $hostPart = explode(':', $_SERVER['HTTP_HOST'] ?? '')[0];
+
+    if (str_ends_with($hostPart, '.jatri.my.id') || $hostPart === 'jatri.my.id') {
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path' => '/',
+            'domain' => '.jatri.my.id',
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Lax'
+        ]);
     }
+
     session_start();
 }
 

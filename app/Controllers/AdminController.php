@@ -7,7 +7,7 @@ use App\Core\Database;
 class AdminController {
     
     public function login() {
-        if (isset($_SESSION['admin_logged_in'])) {
+        if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
             redirect('dashboard', true);
         }
         view('login');
@@ -51,7 +51,7 @@ class AdminController {
     }
 
     private function checkAuth() {
-        if (!isset($_SESSION['admin_logged_in'])) {
+        if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
             redirect('login', false);
         }
     }
