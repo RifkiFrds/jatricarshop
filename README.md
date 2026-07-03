@@ -1,103 +1,80 @@
-# JatriCarShop
+# JatriCarShop - Docker Deployment Guide
 
-Website showroom mobil sederhana berbasis **PHP Native 8+** dengan arsitektur bersih (*clean architecture* sederhana), ramah pemula, dan siap dideploy menggunakan Docker.
-
-## Fitur Utama
-
-- **Website Customer**:
-  - Halaman Beranda (Hero, Rekomendasi Mobil, Tentang, Kontak)
-  - Katalog Mobil dengan visual modern
-  - Detail spesifikasi mobil lengkap
-  - Formulir pemesanan mobil langsung terintegrasi ke database
-- **Dashboard Admin**:
-  - Sistem Login Keamanan Sesi
-  - Halaman Dashboard ringkasan total mobil dan pesanan masuk
-  - Data pesanan terbaru pelanggan secara dinamis
-- **Developer Tools**:
-  - Sistem Migrasi Mandiri (`migrate.php`) untuk struktur database
-  - Sistem Pengisian Data Awal (`seed.php`) untuk menyuntikkan data akun admin & mobil tiruan
-  - Dukungan database MySQL dengan koneksi PDO & Prepared Statements
-  - Autoloading kustom berbasis standar PSR-4 tanpa Composer
+Website showroom mobil sederhana berbasis **PHP Native 8+** dengan Apache, MySQL 8, dan Bootstrap 5. Repositori ini telah dikonfigurasi untuk siap dideploy menggunakan Docker pada environment production (misalnya di Ubuntu 24.04 menggunakan Nginx Proxy Manager).
 
 ---
 
-## Struktur Folder Project
-
-```text
-/public               # Document Root (Aset Publik & Entry Point)
-  /assets
-    /css/style.css    # Desain modern berbasis SaaS/Stripe style
-    /js/main.js       # Logika interaksi frontend
-  .htaccess           # Konfigurasi Apache mod_rewrite
-  index.php           # Front Controller (Entry point utama aplikasi)
-
-/app                  # Logika Aplikasi Inti
-  /Controllers        # Controller penampung request & action
-  /Models             # Model interaksi database (untuk tahap pengembangan lanjut)
-  /views              # File template visual HTML/PHP
-    /layouts          # Header & Footer reusable components
-    /admin            # Tampilan halaman admin
-
-/config               # Pengaturan konfigurasi aplikasi
-  database.php        # Konfigurasi pemuatan database
-
-/database             # Migrasi & Seeder Database
-  /migrations         # SQL pembentuk tabel (admins, cars, orders)
-  /seeders            # Seeder data awal
-  migrate.php         # CLI Script untuk membuat database & tabel
-  seed.php            # CLI Script untuk menyuntikkan data dummy
-
-/.env                 # Variabel Lingkungan / Kredensial Database
-```
+## 1. Prasyarat (Prerequisites)
+- Docker dan Docker Compose telah terinstal di server/lokal.
+- Jaringan docker external bernama `proxy` sudah dibuat (untuk integrasi dengan Nginx Proxy Manager):
+  ```bash
+  docker network create proxy
+  ```
 
 ---
 
-## Langkah Instalasi & Penggunaan
+## 2. Langkah Instalasi & Penggunaan dengan Docker
 
-### 1. Prasyarat (Prerequisites)
-Pastikan Anda sudah menjalankan server lokal dengan dukungan PHP 8+ dan MySQL (seperti **Laragon**, **XAMPP**, atau Docker).
-
-### 2. Duplikasi Pengaturan Environment
-Konfigurasikan database pada berkas `.env` di root folder:
-```env
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=jatricarshop
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-### 3. Migrasi & Seeder Database
-Jalankan perintah berikut pada terminal di root folder project untuk membuat database, tabel, dan menyuntikkan data dummy:
-
+### A. Duplikasi Pengaturan Environment
+Buat file `.env` di root folder dengan menduplikasi `.env.example`:
 ```bash
-# Membuat Database dan Tabel
-php database/migrate.php
+cp .env.example .env
+```
+Sesuaikan konfigurasi di dalam file `.env` jika diperlukan.
 
-# Menyuntikkan Data Awal (1 Admin & 8 Mobil Pilihan)
-php database/seed.php
+### B. Menjalankan Container (Build & Run)
+Jalankan perintah berikut untuk mem-build dan menjalankan service aplikasi dan database di background:
+```bash
+docker compose up -d --build
+```
+
+### C. Menghentikan Container
+Untuk menghentikan dan menghapus container yang sedang berjalan (data database tetap aman di volume `mysql_data`):
+```bash
+docker compose down
+```
+
+### D. Melihat Logs
+Untuk memantau log dari container secara real-time:
+```bash
+docker compose logs -f
+```
+
+### E. Masuk ke dalam Container Aplikasi
+Jika ingin masuk ke terminal container aplikasi PHP:
+```bash
+docker exec -it jatricarshop-app bash
+```
+
+---
+
+## 3. Database Migrasi & Seed di dalam Docker
+
+Jalankan perintah ini dari host untuk melakukan migrasi dan pengisian data awal secara langsung pada container aplikasi:
+
+### Migrasi Database (Membuat Tabel)
+```bash
+docker exec -it jatricarshop-app php database/migrate.php
+```
+
+### Seed Database (Mengisi Data Awal Admin & Mobil)
+```bash
+docker exec -it jatricarshop-app php database/seed.php
 ```
 
 *Kredensial Default Login Admin:*
 - **Username**: `admin`
 - **Password**: `admin123`
 
-### 4. Menjalankan Web Server Lokal
-Jika Anda menggunakan bawaan PHP built-in server, jalankan perintah ini dari root folder:
-```bash
-php -S localhost:8000 -t public
-```
-Akses web melalui peramban di alamat [http://localhost:8000](http://localhost:8000).
-
 ---
 
-## Pengujian / Uji Fungsional (Doc Test)
+## 4. Integrasi dengan Nginx Proxy Manager (NPM)
 
-Aplikasi ini dilengkapi mode tangguh (*robust fallback*). Jika koneksi database belum tersedia atau belum termigrasi, sistem tetap dapat diuji secara offline menggunakan *mockup data* interaktif bawaan Controller.
-
-### Skenario Uji Coba:
-1. **Navigasi Utama**: Buka beranda, klik menu *Daftar Mobil*, *Tentang Kami*, atau *Kontak* untuk menguji navigasi.
-2. **Detail Mobil**: Klik tombol *Detail* pada salah satu mobil di katalog untuk melihat deskripsi lengkap.
-3. **Form Pemesanan**: Klik *Pesan Sekarang*, isi formulir pemesanan, dan kirimkan. Pesan sukses akan muncul setelah terkirim.
-4. **Login Admin**: Masuk ke panel admin lewat tombol *Admin Panel* di kanan atas navbar. Masukkan user `admin` dan password `admin123`.
-5. **Dashboard**: Periksa ringkasan statistik dan daftar pesanan terbaru yang masuk di panel dashboard.
+Untuk mempublikasikan aplikasi menggunakan Nginx Proxy Manager:
+1. Hubungkan domain/subdomain Anda ke alamat IP Server.
+2. Pada Nginx Proxy Manager, tambahkan **Proxy Host** baru:
+   - **Domain Names**: `domainanda.com` (atau subdomain)
+   - **Scheme**: `http`
+   - **Forward HostName / IP**: `jatricarshop-app`
+   - **Forward Port**: `80`
+   - Aktifkan opsi **Block Common Exploits** dan konfigurasikan SSL jika diperlukan.
