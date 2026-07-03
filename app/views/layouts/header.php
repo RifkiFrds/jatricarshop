@@ -41,7 +41,7 @@
                         <a class="nav-link nav-link-modern" href="<?= base_url('') ?>#contact">Kontak</a>
                     </li>
                     <li class="nav-item ms-lg-3">
-                        <a class="btn btn-modern btn-primary-modern" href="<?= admin_url('login') ?>">
+                        <a class="btn btn-modern btn-primary-modern" href="<?= base_url('login') ?>">
                             <i class="bi bi-person-fill"></i> Admin Panel
                         </a>
                     </li>

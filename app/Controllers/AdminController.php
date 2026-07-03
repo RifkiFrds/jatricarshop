@@ -19,7 +19,7 @@ class AdminController {
 
         if (empty($username) || empty($password)) {
             $_SESSION['error'] = 'Username dan password wajib diisi.';
-            redirect('login');
+            redirect('login', false);
         }
 
         try {
@@ -47,12 +47,12 @@ class AdminController {
         }
 
         $_SESSION['error'] = 'Username atau password salah.';
-        redirect('login');
+        redirect('login', false);
     }
 
     private function checkAuth() {
         if (!isset($_SESSION['admin_logged_in'])) {
-            redirect('login');
+            redirect('login', false);
         }
     }
 
@@ -267,6 +267,7 @@ class AdminController {
         unset($_SESSION['admin_username']);
         unset($_SESSION['admin_name']);
         session_destroy();
-        redirect('login');
+        redirect('login', false);
     }
+}
 }
