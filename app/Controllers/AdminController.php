@@ -270,4 +270,3 @@ class AdminController {
         redirect('login', false);
     }
 }
-}
