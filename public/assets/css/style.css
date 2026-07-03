@@ -1,0 +1,417 @@
+/* JatriCarShop Custom Global CSS */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-light: #eff6ff;
+    --secondary-color: #475569;
+    --background-color: #f8fafc;
+    --card-background: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Modern Header & Navigation */
+.navbar-modern {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    transition: var(--transition-smooth);
+}
+
+.navbar-brand-modern {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link-modern {
+    font-weight: 500;
+    color: var(--secondary-color) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-smooth);
+}
+
+.nav-link-modern:hover, .nav-link-modern.active {
+    color: var(--primary-color) !important;
+    background-color: var(--primary-light);
+}
+
+/* Button Styling */
+.btn-modern {
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-smooth);
+    border: none;
+}
+
+.btn-primary-modern {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary-modern:hover {
+    background-color: var(--primary-hover);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-secondary-modern {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.btn-secondary-modern:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    padding: 120px 0 80px 0;
+    background: radial-gradient(circle at 100% 100%, var(--primary-light) 0%, transparent 40%);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text-main);
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Modern Card */
+.card-modern {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    height: 100%;
+}
+
+.card-modern:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.card-img-modern {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+    transition: var(--transition-smooth);
+}
+
+.card-modern:hover .card-img-modern {
+    transform: scale(1.03);
+}
+
+.card-body-modern {
+    padding: 1.5rem;
+}
+
+.card-brand {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.card-title-modern {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.card-price {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.spec-badge {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Footer Custom styling */
+.footer-modern {
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 5rem 0 2rem 0;
+    border-top: 1px solid #1e293b;
+}
+
+.footer-logo {
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.footer-link {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+/* Dashboard SaaS Layout */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar-modern {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid var(--border-color);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-shrink: 0;
+}
+
+.sidebar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition: var(--transition-smooth);
+}
+
+.sidebar-link:hover, .sidebar-link.active {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.dashboard-main {
+    flex-grow: 1;
+    min-width: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    padding: 2.5rem;
+}
+
+.stat-card {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.stat-number {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1;
+    margin: 0.5rem 0;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.table-modern {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+}
+
+.table-modern th {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-modern td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+
+.table-modern tr:last-child td {
+    border-bottom: none;
+}
+
+/* Badge styling */
+.badge-status {
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge-pending {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.badge-completed {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.badge-processing {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+.badge-cancelled {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.badge-available {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.badge-sold {
+    background-color: #f1f5f9;
+    color: #64748b;
+}
+
+/* Form controls modern styling */
+.form-control-modern {
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+}
+
+.form-control-modern:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--primary-light);
+    outline: none;
+}
+
+/* Auth card design */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 10% 20%, var(--primary-light) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, var(--primary-light) 0%, transparent 50%);
+}
+
+.auth-card {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: var(--shadow-hover);
+}
+
+/* Mobile Header for Admin Panel */
+.mobile-header {
+    height: 70px;
+    z-index: 1030;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Dashboard Responsiveness */
+@media (max-width: 991.98px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar-modern {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        height: 100vh;
+        z-index: 1050;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.15);
+        transition: var(--transition-smooth);
+        background-color: #ffffff;
+    }
+
+    .sidebar-modern.show {
+        left: 0;
+    }
+
+    .dashboard-main {
+        padding: 1.5rem 1rem;
+    }
+}
+
