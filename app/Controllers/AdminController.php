@@ -8,7 +8,7 @@ class AdminController {
     
     public function login() {
         if (isset($_SESSION['admin_logged_in'])) {
-            redirect('admin/dashboard');
+            redirect('dashboard', true);
         }
         view('login');
     }
@@ -32,7 +32,7 @@ class AdminController {
                 $_SESSION['admin_logged_in'] = true;
                 $_SESSION['admin_username'] = $admin['username'];
                 $_SESSION['admin_name'] = $admin['name'];
-                redirect('admin/dashboard');
+                redirect('dashboard', true);
             }
         } catch (\Exception $e) {
             // Fallback for testing/offline mode
@@ -43,7 +43,7 @@ class AdminController {
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['admin_username'] = 'admin';
             $_SESSION['admin_name'] = 'Jatri Car Admin (Offline)';
-            redirect('admin/dashboard');
+            redirect('dashboard', true);
         }
 
         $_SESSION['error'] = 'Username atau password salah.';
@@ -113,7 +113,7 @@ class AdminController {
         $this->checkAuth();
         view('admin/car_form', [
             'title' => 'Tambah Mobil Baru',
-            'action' => base_url('admin/cars/create'),
+            'action' => admin_url('cars/create'),
             'car' => null
         ]);
     }
@@ -134,7 +134,7 @@ class AdminController {
 
         if (empty($brand) || empty($model) || empty($year) || empty($price) || empty($transmission) || empty($fuel_type) || empty($mileage) || empty($color) || empty($description)) {
             $_SESSION['error'] = 'Semua field wajib diisi kecuali URL Gambar.';
-            redirect('admin/cars/create');
+            redirect('cars/create', true);
         }
 
         if (empty($image)) {
@@ -146,10 +146,10 @@ class AdminController {
             $stmt = $db->prepare("INSERT INTO cars (brand, model, year, price, transmission, fuel_type, mileage, color, image, description, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([$brand, $model, $year, $price, $transmission, $fuel_type, $mileage, $color, $image, $description, $status]);
             $_SESSION['success'] = 'Mobil baru berhasil ditambahkan!';
-            redirect('admin/cars');
+            redirect('cars', true);
         } catch (\Exception $e) {
             $_SESSION['error'] = 'Gagal menyimpan mobil ke database: ' . $e->getMessage();
-            redirect('admin/cars/create');
+            redirect('cars/create', true);
         }
     }
 
@@ -162,16 +162,16 @@ class AdminController {
             $car = $stmt->fetch();
             if (!$car) {
                 $_SESSION['error'] = 'Mobil tidak ditemukan.';
-                redirect('admin/cars');
+                redirect('cars', true);
             }
             view('admin/car_form', [
                 'title' => 'Edit Mobil',
-                'action' => base_url('admin/cars/edit/' . $id),
+                'action' => admin_url('cars/edit/' . $id),
                 'car' => $car
             ]);
         } catch (\Exception $e) {
             $_SESSION['error'] = 'Database error: ' . $e->getMessage();
-            redirect('admin/cars');
+            redirect('cars', true);
         }
     }
 
@@ -191,7 +191,7 @@ class AdminController {
 
         if (empty($brand) || empty($model) || empty($year) || empty($price) || empty($transmission) || empty($fuel_type) || empty($mileage) || empty($color) || empty($description)) {
             $_SESSION['error'] = 'Semua field wajib diisi.';
-            redirect('admin/cars/edit/' . $id);
+            redirect('cars/edit/' . $id, true);
         }
 
         if (empty($image)) {
@@ -203,10 +203,10 @@ class AdminController {
             $stmt = $db->prepare("UPDATE cars SET brand = ?, model = ?, year = ?, price = ?, transmission = ?, fuel_type = ?, mileage = ?, color = ?, image = ?, description = ?, status = ? WHERE id = ?");
             $stmt->execute([$brand, $model, $year, $price, $transmission, $fuel_type, $mileage, $color, $image, $description, $status, $id]);
             $_SESSION['success'] = 'Mobil berhasil diperbarui!';
-            redirect('admin/cars');
+            redirect('cars', true);
         } catch (\Exception $e) {
             $_SESSION['error'] = 'Gagal memperbarui mobil: ' . $e->getMessage();
-            redirect('admin/cars/edit/' . $id);
+            redirect('cars/edit/' . $id, true);
         }
     }
 
@@ -220,7 +220,7 @@ class AdminController {
         } catch (\Exception $e) {
             $_SESSION['error'] = 'Gagal menghapus mobil: ' . $e->getMessage();
         }
-        redirect('admin/cars');
+        redirect('cars', true);
     }
 
     public function orders() {
@@ -246,7 +246,7 @@ class AdminController {
         } catch (\Exception $e) {
             $_SESSION['error'] = 'Gagal memperbarui status pesanan: ' . $e->getMessage();
         }
-        redirect('admin/orders');
+        redirect('orders', true);
     }
 
     public function deleteOrder($id) {
@@ -259,7 +259,7 @@ class AdminController {
         } catch (\Exception $e) {
             $_SESSION['error'] = 'Gagal menghapus pesanan: ' . $e->getMessage();
         }
-        redirect('admin/orders');
+        redirect('orders', true);
     }
 
     public function logout() {

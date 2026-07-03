@@ -18,7 +18,7 @@
     <div class="dashboard-container">
         <!-- Mobile Header -->
         <div class="mobile-header d-lg-none d-flex justify-content-between align-items-center p-3 bg-white border-bottom w-100">
-            <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-brand mb-0">
+            <a href="<?= admin_url('dashboard') ?>" class="sidebar-brand mb-0">
                 <i class="bi bi-speedometer2"></i> JatriCarShop
             </a>
             <button class="btn btn-outline-primary btn-sm rounded-pill px-3" type="button" id="sidebarToggle">
@@ -33,22 +33,22 @@
             </a>
             <ul class="sidebar-menu">
                 <li>
-                    <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-link active">
+                    <a href="<?= admin_url('dashboard') ?>" class="sidebar-link active">
                         <i class="bi bi-grid-fill"></i> Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/cars') ?>" class="sidebar-link">
+                    <a href="<?= admin_url('cars') ?>" class="sidebar-link">
                         <i class="bi bi-car-front-fill"></i> Kelola Mobil
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/orders') ?>" class="sidebar-link">
+                    <a href="<?= admin_url('orders') ?>" class="sidebar-link">
                         <i class="bi bi-cart-fill"></i> Pesanan
                     </a>
                 </li>
                 <li class="mt-auto">
-                    <a href="<?= base_url('admin/logout') ?>" class="sidebar-link text-danger">
+                    <a href="<?= admin_url('logout') ?>" class="sidebar-link text-danger">
                         <i class="bi bi-box-arrow-right"></i> Keluar
                     </a>
                 </li>
@@ -68,7 +68,7 @@
                         <i class="bi bi-person-circle"></i> <?= htmlspecialchars($_SESSION['admin_username'] ?? 'admin') ?>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-menu-item text-danger d-block px-3 py-2 text-decoration-none small" href="<?= base_url('admin/logout') ?>"><i class="bi bi-box-arrow-right"></i> Keluar</a></li>
+                        <li><a class="dropdown-menu-item text-danger d-block px-3 py-2 text-decoration-none small" href="<?= admin_url('logout') ?>"><i class="bi bi-box-arrow-right"></i> Keluar</a></li>
                     </ul>
                 </div>
             </header>
@@ -137,7 +137,7 @@
                                         </td>
                                         <td><?= date('d M Y, H:i', strtotime($order['created_at'])) ?></td>
                                         <td>
-                                            <a href="<?= base_url('admin/orders') ?>" class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1">
+                                            <a href="<?= admin_url('orders') ?>" class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1">
                                                 Kelola
                                             </a>
                                         </td>

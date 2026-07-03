@@ -18,7 +18,7 @@
     <div class="dashboard-container">
         <!-- Mobile Header -->
         <div class="mobile-header d-lg-none d-flex justify-content-between align-items-center p-3 bg-white border-bottom w-100">
-            <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-brand mb-0">
+            <a href="<?= admin_url('dashboard') ?>" class="sidebar-brand mb-0">
                 <i class="bi bi-speedometer2"></i> JatriCarShop
             </a>
             <button class="btn btn-outline-primary btn-sm rounded-pill px-3" type="button" id="sidebarToggle">
@@ -33,22 +33,22 @@
             </a>
             <ul class="sidebar-menu">
                 <li>
-                    <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-link">
+                    <a href="<?= admin_url('dashboard') ?>" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i> Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/cars') ?>" class="sidebar-link active">
+                    <a href="<?= admin_url('cars') ?>" class="sidebar-link active">
                         <i class="bi bi-car-front-fill"></i> Kelola Mobil
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/orders') ?>" class="sidebar-link">
+                    <a href="<?= admin_url('orders') ?>" class="sidebar-link">
                         <i class="bi bi-cart-fill"></i> Pesanan
                     </a>
                 </li>
                 <li class="mt-auto">
-                    <a href="<?= base_url('admin/logout') ?>" class="sidebar-link text-danger">
+                    <a href="<?= admin_url('logout') ?>" class="sidebar-link text-danger">
                         <i class="bi bi-box-arrow-right"></i> Keluar
                     </a>
                 </li>
@@ -64,7 +64,7 @@
                     <p class="text-muted small mb-0">Isi formulir data mobil secara lengkap</p>
                 </div>
                 <div>
-                    <a href="<?= base_url('admin/cars') ?>" class="btn btn-light border rounded-pill px-4">
+                    <a href="<?= admin_url('cars') ?>" class="btn btn-light border rounded-pill px-4">
                         <i class="bi bi-arrow-left me-1"></i> Kembali
                     </a>
                 </div>
@@ -164,7 +164,7 @@
 
                         <!-- Submit Buttons -->
                         <div class="col-12 mt-4 d-flex gap-2 justify-content-end">
-                            <a href="<?= base_url('admin/cars') ?>" class="btn btn-light border rounded-pill px-4 py-2">Batal</a>
+                            <a href="<?= admin_url('cars') ?>" class="btn btn-light border rounded-pill px-4 py-2">Batal</a>
                             <button type="submit" class="btn btn-primary-modern rounded-pill px-5 py-2">
                                 <i class="bi bi-save me-1"></i> Simpan Data Mobil
                             </button>

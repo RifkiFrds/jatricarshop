@@ -18,7 +18,7 @@
     <div class="dashboard-container">
         <!-- Mobile Header -->
         <div class="mobile-header d-lg-none d-flex justify-content-between align-items-center p-3 bg-white border-bottom w-100">
-            <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-brand mb-0">
+            <a href="<?= admin_url('dashboard') ?>" class="sidebar-brand mb-0">
                 <i class="bi bi-speedometer2"></i> JatriCarShop
             </a>
             <button class="btn btn-outline-primary btn-sm rounded-pill px-3" type="button" id="sidebarToggle">
@@ -33,22 +33,22 @@
             </a>
             <ul class="sidebar-menu">
                 <li>
-                    <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-link">
+                    <a href="<?= admin_url('dashboard') ?>" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i> Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/cars') ?>" class="sidebar-link active">
+                    <a href="<?= admin_url('cars') ?>" class="sidebar-link active">
                         <i class="bi bi-car-front-fill"></i> Kelola Mobil
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/orders') ?>" class="sidebar-link">
+                    <a href="<?= admin_url('orders') ?>" class="sidebar-link">
                         <i class="bi bi-cart-fill"></i> Pesanan
                     </a>
                 </li>
                 <li class="mt-auto">
-                    <a href="<?= base_url('admin/logout') ?>" class="sidebar-link text-danger">
+                    <a href="<?= admin_url('logout') ?>" class="sidebar-link text-danger">
                         <i class="bi bi-box-arrow-right"></i> Keluar
                     </a>
                 </li>
@@ -64,7 +64,7 @@
                     <p class="text-muted small mb-0">Manajemen data kendaraan showroom</p>
                 </div>
                 <div class="d-flex align-items-center gap-3">
-                    <a href="<?= base_url('admin/cars/create') ?>" class="btn btn-primary-modern d-flex align-items-center gap-2">
+                    <a href="<?= admin_url('cars/create') ?>" class="btn btn-primary-modern d-flex align-items-center gap-2">
                         <i class="bi bi-plus-lg"></i> Tambah Mobil Baru
                     </a>
                 </div>
@@ -142,13 +142,13 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-2 rounded-3" style="min-width: 120px;">
                                                     <li>
-                                                        <a class="dropdown-item rounded-2 py-1 px-3 mb-1 small text-dark" href="<?= base_url('admin/cars/edit/' . $car['id']) ?>">
+                                                        <a class="dropdown-item rounded-2 py-1 px-3 mb-1 small text-dark" href="<?= admin_url('cars/edit/' . $car['id']) ?>">
                                                             <i class="bi bi-pencil-square me-2"></i> Edit
                                                         </a>
                                                     </li>
                                                     <li><hr class="dropdown-divider"></li>
                                                     <li>
-                                                        <form action="<?= base_url('admin/cars/delete/' . $car['id']) ?>" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus mobil ini? Semua pesanan terkait mobil ini juga akan dihapus.');">
+                                                        <form action="<?= admin_url('cars/delete/' . $car['id']) ?>" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus mobil ini? Semua pesanan terkait mobil ini juga akan dihapus.');">
                                                             <button type="submit" class="dropdown-item rounded-2 py-1 px-3 text-danger small"><i class="bi bi-trash3 me-2"></i> Hapus</button>
                                                         </form>
                                                     </li>

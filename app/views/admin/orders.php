@@ -18,7 +18,7 @@
     <div class="dashboard-container">
         <!-- Mobile Header -->
         <div class="mobile-header d-lg-none d-flex justify-content-between align-items-center p-3 bg-white border-bottom w-100">
-            <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-brand mb-0">
+            <a href="<?= admin_url('dashboard') ?>" class="sidebar-brand mb-0">
                 <i class="bi bi-speedometer2"></i> JatriCarShop
             </a>
             <button class="btn btn-outline-primary btn-sm rounded-pill px-3" type="button" id="sidebarToggle">
@@ -33,22 +33,22 @@
             </a>
             <ul class="sidebar-menu">
                 <li>
-                    <a href="<?= base_url('admin/dashboard') ?>" class="sidebar-link">
+                    <a href="<?= admin_url('dashboard') ?>" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i> Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/cars') ?>" class="sidebar-link">
+                    <a href="<?= admin_url('cars') ?>" class="sidebar-link">
                         <i class="bi bi-car-front-fill"></i> Kelola Mobil
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('admin/orders') ?>" class="sidebar-link active">
+                    <a href="<?= admin_url('orders') ?>" class="sidebar-link active">
                         <i class="bi bi-cart-fill"></i> Pesanan
                     </a>
                 </li>
                 <li class="mt-auto">
-                    <a href="<?= base_url('admin/logout') ?>" class="sidebar-link text-danger">
+                    <a href="<?= admin_url('logout') ?>" class="sidebar-link text-danger">
                         <i class="bi bi-box-arrow-right"></i> Keluar
                     </a>
                 </li>
@@ -148,32 +148,32 @@
                                                 <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-2 rounded-3" style="min-width: 150px;">
                                                     <li class="dropdown-header small text-muted px-3 py-1 fw-bold">Ubah Status</li>
                                                     <li>
-                                                        <form action="<?= base_url('admin/orders/status/' . $order['id']) ?>" method="POST">
+                                                        <form action="<?= admin_url('orders/status/' . $order['id']) ?>" method="POST">
                                                             <input type="hidden" name="status" value="pending">
                                                             <button type="submit" class="dropdown-item rounded-2 py-1 px-3 mb-1 text-warning small"><i class="bi bi-clock me-2"></i> Pending</button>
                                                         </form>
                                                     </li>
                                                     <li>
-                                                        <form action="<?= base_url('admin/orders/status/' . $order['id']) ?>" method="POST">
+                                                        <form action="<?= admin_url('orders/status/' . $order['id']) ?>" method="POST">
                                                             <input type="hidden" name="status" value="processing">
                                                             <button type="submit" class="dropdown-item rounded-2 py-1 px-3 mb-1 text-primary small"><i class="bi bi-play-fill me-2"></i> Diproses</button>
                                                         </form>
                                                     </li>
                                                     <li>
-                                                        <form action="<?= base_url('admin/orders/status/' . $order['id']) ?>" method="POST">
+                                                        <form action="<?= admin_url('orders/status/' . $order['id']) ?>" method="POST">
                                                             <input type="hidden" name="status" value="completed">
                                                             <button type="submit" class="dropdown-item rounded-2 py-1 px-3 mb-1 text-success small"><i class="bi bi-check-lg me-2"></i> Selesai</button>
                                                         </form>
                                                     </li>
                                                     <li>
-                                                        <form action="<?= base_url('admin/orders/status/' . $order['id']) ?>" method="POST">
+                                                        <form action="<?= admin_url('orders/status/' . $order['id']) ?>" method="POST">
                                                             <input type="hidden" name="status" value="cancelled">
                                                             <button type="submit" class="dropdown-item rounded-2 py-1 px-3 text-danger small"><i class="bi bi-x-lg me-2"></i> Batal</button>
                                                         </form>
                                                     </li>
                                                     <li><hr class="dropdown-divider"></li>
                                                     <li>
-                                                        <form action="<?= base_url('admin/orders/delete/' . $order['id']) ?>" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data pesanan ini?');">
+                                                        <form action="<?= admin_url('orders/delete/' . $order['id']) ?>" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data pesanan ini?');">
                                                             <button type="submit" class="dropdown-item rounded-2 py-1 px-3 text-danger small"><i class="bi bi-trash3 me-2"></i> Hapus</button>
                                                         </form>
                                                     </li>
