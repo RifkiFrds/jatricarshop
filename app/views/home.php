@@ -61,7 +61,7 @@
     <div class="container py-4">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <img src="https://i.ibb.co/1f0z7t33/Gemini-Generated-Image-h5q9ceh5q9ceh5q9.png" class="img-fluid rounded-4 shadow-sm" alt="About JatriCarShop" style="height: 450px; object-fit: cover; width: 100%;">
+                <img src="https://i.ibb.co.com/JR5vwV4d/Gemini-Generated-Image-4ypg0i4ypg0i4ypg.png" class="img-fluid rounded-4 shadow-sm" alt="About JatriCarShop" style="height: 450px; object-fit: cover; width: 100%;">
             </div>
             <div class="col-lg-6">
                 <span class="text-primary fw-semibold">Tentang Kami</span>
