@@ -3,7 +3,7 @@
 <section class="py-5 mt-5">
     <div class="container py-5">
         <div class="text-center mb-5">
-            <h1 class="fw-bold">Katalog Mobil Pilihan</h1>
+            <h1 class="fw-bold">Katalog Mobil Pilihan Terbaik</h1>
             <p class="text-muted">Temukan berbagai model kendaraan berkualitas tinggi untuk kenyamanan perjalanan Anda.</p>
         </div>
 
